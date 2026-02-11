@@ -41,7 +41,10 @@ export default function ProductsPage() {
     <main className="products-page">
       <header className="products-page__header">
         <h1>Каталог продуктов</h1>
-        <p>Выберите товар и перейдите на страницу с детальным описанием.</p>
+        <p>
+          Подборка популярных товаров: переходите в карточку, чтобы посмотреть детальное описание
+          и характеристики.
+        </p>
       </header>
 
       {isLoading && <p className="status">Загрузка...</p>}

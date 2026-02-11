@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom'
 
 export default function ProductCard({ product }) {
+  const discountedPrice = Math.round(product.price * (1 - product.discountPercentage / 100))
+
   return (
     <article className="product-card">
+      <span className="product-card__badge">-{Math.round(product.discountPercentage)}%</span>
+
       <img
         className="product-card__image"
         src={product.thumbnail}
@@ -16,9 +20,13 @@ export default function ProductCard({ product }) {
         <p className="product-card__description">{product.description}</p>
 
         <div className="product-card__footer">
-          <span className="product-card__price">${product.price}</span>
+          <div className="product-card__prices">
+            <span className="product-card__price">${discountedPrice}</span>
+            <span className="product-card__price product-card__price--old">${product.price}</span>
+          </div>
+
           <Link className="product-card__button" to={`/products/${product.id}`}>
-            Подробнее
+            Детали →
           </Link>
         </div>
       </div>
