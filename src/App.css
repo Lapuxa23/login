@@ -1,3 +1,23 @@
 #root {
   min-height: 100vh;
 }
+
+.main-nav {
+  width: min(1120px, 100% - 32px);
+  margin: 18px auto 0;
+  display: flex;
+  gap: 10px;
+}
+
+.main-nav a {
+  padding: 8px 12px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  color: #1e293b;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.main-nav a:hover {
+  background: #cbd5e1;
+}
