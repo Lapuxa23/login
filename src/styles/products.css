@@ -1,11 +1,16 @@
 .products-page {
   width: min(1120px, 100% - 32px);
-  margin: 32px auto;
+  margin: 30px auto 40px;
   color: #1e293b;
 }
 
 .products-page__header {
   margin-bottom: 24px;
+  background: #ffffffcc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
 }
 
 .products-page__header h1 {
@@ -14,8 +19,9 @@
 }
 
 .products-page__header p {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   color: #475569;
+  max-width: 720px;
 }
 
 .products-grid {
@@ -25,12 +31,33 @@
 }
 
 .product-card {
+  position: relative;
   background: #fff;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
   display: flex;
   flex-direction: column;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  background: #0f172a;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 4px 8px;
 }
 
 .product-card__image {
@@ -78,11 +105,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
+}
+
+.product-card__prices {
+  display: grid;
+  gap: 2px;
 }
 
 .product-card__price {
   font-size: 1.25rem;
   font-weight: 700;
+}
+
+.product-card__price--old {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+  font-weight: 500;
 }
 
 .product-card__button,
@@ -112,7 +152,7 @@
 }
 
 .products-page--details {
-  max-width: 920px;
+  max-width: 980px;
 }
 
 .back-link {
@@ -124,16 +164,26 @@
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e2e8f0;
   padding: 24px;
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 24px;
 }
 
+.product-details__gallery {
+  background: linear-gradient(180deg, #f8fafc, #eef2ff);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
 .product-details__image {
   width: 100%;
   border-radius: 14px;
   background: #f8fafc;
+  border: 1px solid #e2e8f0;
 }
 
 .product-details__content h1 {

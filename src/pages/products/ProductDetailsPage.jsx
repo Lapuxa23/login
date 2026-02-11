@@ -5,6 +5,7 @@ import '../../styles/products.css'
 
 export default function ProductDetailsPage() {
   const { id } = useParams()
+  const productId = Number(id)
   const [product, setProduct] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
@@ -14,8 +15,12 @@ export default function ProductDetailsPage() {
 
     async function loadProduct() {
       try {
+        if (!Number.isInteger(productId) || productId <= 0) {
+          throw new Error('Некорректный идентификатор продукта')
+        }
+
         setIsLoading(true)
-        const data = await getProductById(id)
+        const data = await getProductById(productId)
 
         if (isMounted) {
           setProduct(data)
@@ -36,7 +41,7 @@ export default function ProductDetailsPage() {
     return () => {
       isMounted = false
     }
-  }, [id])
+  }, [productId])
 
   return (
     <main className="products-page products-page--details">
@@ -49,7 +54,9 @@ export default function ProductDetailsPage() {
 
       {product && !error && (
         <section className="product-details">
-          <img src={product.thumbnail} alt={product.title} className="product-details__image" />
+          <div className="product-details__gallery">
+            <img src={product.thumbnail} alt={product.title} className="product-details__image" />
+          </div>
 
           <div className="product-details__content">
             <p className="product-card__category">{product.category}</p>
@@ -68,6 +75,9 @@ export default function ProductDetailsPage() {
               </li>
               <li>
                 <span>Остаток:</span> {product.stock}
+              </li>
+              <li>
+                <span>Скидка:</span> {product.discountPercentage}%
               </li>
             </ul>
           </div>
